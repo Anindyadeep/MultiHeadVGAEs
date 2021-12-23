@@ -62,7 +62,7 @@ def parameter_parser():
         "--num_heads",
         dest = "num_heads",
         type = int,
-        default = 4,
+        default = 2,
         help = "(optional) Only use when we use multi-headed models of VGAE"
     )
 
@@ -72,6 +72,15 @@ def parameter_parser():
         type = str,
         default = "None",
         help = "(optional) Only use when you want to log the metrics on wandb"
+    )
+
+
+    parser.add_argument(
+        "--heads",
+        dest = "heads",
+        type = str,
+        default = 'None',
+        help = "Heads that will be used in Multiheaded GCN-GAT when required eg: gcn-gat-gcn-gat"
     )
 
     return parser.parse_args()

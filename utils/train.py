@@ -15,7 +15,7 @@ sys.path.append(str(BASE_DIR) + "/")
 warnings.filterwarnings("ignore")
 
 from utils import metrics, input_data
-from Models import base_model, multi_head_gcn, gcn_gat, multi_head_gcn_gat, gcn_gat_cat
+from Models import base_model, gcn_gcn_merge, multi_head_gcn, gcn_gat, multi_head_gcn_gat, gcn_gat_merge
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 class SampleConv(nn.Module):
@@ -49,14 +49,22 @@ class TorchTrain(object):
         self.epoch = parameters['epochs']
         model_name = parameters['model']
         optimizer_name = parameters['optimizer']
+        heads_list = parameters['heads'].split('-')
 
         self.data = self.data.to(device)
         self.models = {
             "base_model" : base_model.BaseVGAE(self.data.x.shape[1], self.hidden_dim1, self.hidden_dim2).to(device),
             "multi_head_gcn" : multi_head_gcn.MultiHeadGcnGVAE(self.data.x.shape[1], self.hidden_dim1, self.hidden_dim2, self.num_heads).to(device),
             "gcn_gat" : gcn_gat.GCNGATVGAE(self.data.x.shape[1], self.hidden_dim1, self.hidden_dim2, self.num_heads).to(device),
-            "gcn_gat_cat" : gcn_gat_cat.GCNGATVGAE(self.data.x.shape[1], self.hidden_dim1, self.hidden_dim2, self.num_heads).to(device),
-            "multi_head_gcn_gat" : multi_head_gcn_gat.MultiHeadGCNGATVGAE(self.data.x.shape[1], self.hidden_dim1, self.hidden_dim2, arch_list=['gcn', 'gat', 'gcn', 'gat'], num_heads_gat=self.num_heads).to(device)
+            "gcn_gat_cat" : gcn_gat.GCNGATVGAE(self.data.x.shape[1], self.hidden_dim1, self.hidden_dim2, self.num_heads).to(device),
+            "multi_head_gcn_gat" : multi_head_gcn_gat.MultiHeadGCNGATVGAE(self.data.x.shape[1], self.hidden_dim1, self.hidden_dim2, arch_list=heads_list, num_heads_gat=self.num_heads).to(device),
+            "gcn_gcn_merge" : gcn_gcn_merge.GCNMerge(self.data.x.shape[1], self.hidden_dim1, self.hidden_dim2).to(device),
+
+            # best model
+            "gcn_gat_merge" : gcn_gat_merge.GCNMerge(self.data.x.shape[1], self.hidden_dim1, self.hidden_dim2, self.num_heads).to(device)
+            
+            # multi-head gcn-gat merge is only model which is left to make.
+
         }
 
         self.model = self.models[model_name]

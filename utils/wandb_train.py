@@ -53,6 +53,7 @@ class TorchTrain(object):
         self.epoch = parameters['epochs']
         model_name = parameters['model']
         optimizer_name = parameters['optimizer']
+        heads_list = parameters['heads'].split('-')
 
         self.data = self.data.to(device)
         self.models = {
@@ -60,7 +61,7 @@ class TorchTrain(object):
             "multi_head_gcn" : multi_head_gcn.MultiHeadGcnGVAE(self.data.x.shape[1], self.hidden_dim1, self.hidden_dim2, self.num_heads).to(device),
             "gcn_gat" : gcn_gat.GCNGATVGAE(self.data.x.shape[1], self.hidden_dim1, self.hidden_dim2, self.num_heads).to(device),
             "gcn_gat_cat" : gcn_gat_cat.GCNGATVGAE(self.data.x.shape[1], self.hidden_dim1, self.hidden_dim2, self.num_heads).to(device),
-            "multi_head_gcn_gat" : multi_head_gcn_gat.MultiHeadGCNGATVGAE(self.data.x.shape[1], self.hidden_dim1, self.hidden_dim2, arch_list=['gcn', 'gat', 'gcn', 'gat'], num_heads_gat=self.num_heads).to(device)
+            "multi_head_gcn_gat" : multi_head_gcn_gat.MultiHeadGCNGATVGAE(self.data.x.shape[1], self.hidden_dim1, self.hidden_dim2, arch_list=heads_list, num_heads_gat=self.num_heads).to(device)
         }
 
         self.model = self.models[model_name]
@@ -76,6 +77,16 @@ class TorchTrain(object):
         
         self.optimizer =  self.optimizers[optimizer_name]
         self.criterion = metrics.VGAEMetrics(encoder = self.model_encoder)
+
+        if "head" in model_name:
+            if "multi_head_gcn_gat" in model_name:
+                run_name = f"{model_name}_{parameters['dataset']}_hd1_{self.hidden_dim1}_hd2_{self.hidden_dim2}_arch_num_heads_{self.num_heads}_attn_heads_{parameters['heads']}"
+            else:
+                run_name = f"{model_name}_{parameters['dataset']}_hd1_{self.hidden_dim1}_hd2_{self.hidden_dim2}_gcn_heads_{self.num_heads}"
+                
+        else:
+            run_name = f"{model_name}_{parameters['dataset']}_hd1_{self.hidden_dim1}_hd2_{self.hidden_dim2}_num_heads_{self.num_heads}"
+        wandb.run.name = run_name 
 
     def __metric_log(self, loss, roc, ap, time_lapsed):
         wandb.log(
