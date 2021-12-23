@@ -27,6 +27,7 @@ def main():
             "hidden_dim1" : parser.hidden_dim1,
             "hidden_dim2" : parser.hidden_dim2,
             "num_heads"   : parser.num_heads,
+            "heads" : parser.heads,
             "wandb_project_name" : parser.wandb_project_name
         }
     
@@ -42,6 +43,7 @@ def main():
         ['learning rate', parameters['lr']],
         ['epochs', parameters['epochs']],
         ['num heads', parameters['num_heads']],
+        ["heads", parameters["heads"].split('-')],
         ['wandb-project-name', parameters['wandb_project_name']]
         ]
     )
@@ -64,6 +66,8 @@ def main():
     torch.save(model, path_to_save_models)
     print(f"Saved the model as {model_name} successfully!!!")
 
+
+#  python3 main.py --model gcn_gat_merge --dataset pubmed --lr 0.01575 --num_heads 4 (best model)
 
 if __name__ == '__main__':
     try:
