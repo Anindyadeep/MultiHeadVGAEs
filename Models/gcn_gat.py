@@ -16,7 +16,6 @@ class GCNGATVGAE(nn.Module):
         self.gat_logvar = gnn.GATConv(num_heads * hidden_dim1, hidden_dim2, heads=num_heads, concat = False)
 
         self.decoder = M.InnerProductDecoder()
-        print(f"Using {num_heads} heads")
 
     
     def encode(self, x, edge_index):

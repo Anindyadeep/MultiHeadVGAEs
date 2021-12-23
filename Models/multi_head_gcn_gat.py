@@ -19,11 +19,11 @@ class HiddenGCNEncoder(nn.Module):
 
 
 class HiddenGATEncoder(nn.Module):
-    def __init__(self, input_feat_dim, hidden_dim1, hidden_dim2, num_heads = 3):
+    def __init__(self, input_feat_dim, hidden_dim1, hidden_dim2, attention_heads = 3):
         super(HiddenGATEncoder, self).__init__()
-        self.gat = gnn.GATConv(input_feat_dim, hidden_dim1, heads=num_heads, concat = True) 
-        self.gat_mu = gnn.GATConv(num_heads * hidden_dim1, hidden_dim2, heads=num_heads, concat = False)
-        self.gat_logvar = gnn.GATConv(num_heads * hidden_dim1, hidden_dim2, heads=num_heads, concat = False)
+        self.gat = gnn.GATConv(input_feat_dim, hidden_dim1, heads=attention_heads, concat = True) 
+        self.gat_mu = gnn.GATConv(attention_heads * hidden_dim1, hidden_dim2, heads=attention_heads, concat = False)
+        self.gat_logvar = gnn.GATConv(attention_heads * hidden_dim1, hidden_dim2, heads=attention_heads, concat = False)
 
     def forward(self, x, adj):
         hidden_gat = self.gat(x, adj)
