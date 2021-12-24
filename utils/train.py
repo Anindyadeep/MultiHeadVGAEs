@@ -15,7 +15,7 @@ sys.path.append(str(BASE_DIR) + "/")
 warnings.filterwarnings("ignore")
 
 from utils import metrics, input_data
-from Models import base_model, gcn_gcn_merge, multi_head_gcn, gcn_gat, multi_head_gcn_gat, gcn_gat_merge
+from Models import base_model, gcn_gcn_merge, multi_head_gcn, gcn_gat, multi_head_gcn_gat, gcn_gat_merge, multi_head_gcn_gat_merge
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 class SampleConv(nn.Module):
@@ -62,12 +62,18 @@ class TorchTrain(object):
 
             # best model
             "gcn_gat_merge" : gcn_gat_merge.GCNMerge(self.data.x.shape[1], self.hidden_dim1, self.hidden_dim2, self.num_heads).to(device)
-            
-            # multi-head gcn-gat merge is only model which is left to make.
+            }
 
-        }
+        if model_name == 'multi_head_gcn_gat_merge':
+            self.model = multi_head_gcn_gat_merge.MultiHeadGCNGATMergeVGAE(
+                                        input_feat_dim = self.data.x.shape[1],
+                                        hidden_dim1 = self.hidden_dim1,
+                                        hidden_dim2 = self.hidden_dim2,
+                                        arch_list = heads_list,
+                                        num_heads = self.num_heads).to(device)
+        else:
+            self.model = self.models[model_name]
 
-        self.model = self.models[model_name]
         # printing the model
         print(self.model)
         self.model_encoder = SampleConv(self.data.x.shape[1], self.hidden_dim1, self.hidden_dim2)

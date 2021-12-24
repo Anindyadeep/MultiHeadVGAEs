@@ -1,5 +1,5 @@
-import os 
-import sys 
+import os
+import sys
 import warnings
 from pathlib import Path
 from prettytable import PrettyTable
@@ -13,7 +13,7 @@ from utils.train import TorchTrain
 from utils.wandb_train import TorchTrain as WanDBTorchTrain
 from utils.wandb_train import wandb_model_pipeline
 from utils.parser import parameter_parser
-import torch 
+import torch
 import wandb
 
 def main():
@@ -30,7 +30,7 @@ def main():
             "heads" : parser.heads,
             "wandb_project_name" : parser.wandb_project_name
         }
-    
+
     print()
     table = PrettyTable()
     table.field_names = ['Hyper Parameters and variables', 'Values used']
@@ -65,7 +65,6 @@ def main():
     path_to_save_models = os.path.join(path_to_save_models, model_name)
     torch.save(model, path_to_save_models)
     print(f"Saved the model as {model_name} successfully!!!")
-
 
 if __name__ == '__main__':
     try:
