@@ -1,0 +1,4 @@
+1. Apply MULTI-HEAD-GCN-GATCONV model as the final generalised model 
+2. Don't forget to mention in the paper that applying relu was not benifitial rather downgraded the model 
+3. best lr so far: 01575375 with 3 or 4 attention heads and 2 general heads, in terms of relative speed and beating other models in metrics 
+4. python3 main.py --model gcn_gat_merge --dataset pubmed --lr 0.01575375 --num_heads 4
