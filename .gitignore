@@ -1,6 +1,6 @@
 runs/
 saved_models/
-wandb/
+Tests/wandb/
 cora_benchmark_beats.py
 citeseer_benchmark_beats.py
 pubmed_benchmark_beats.py

@@ -67,7 +67,7 @@ def main():
     print(f"Saved the model as {model_name} successfully!!!")
 
 
-#  python3 main.py --model gcn_gat_merge --dataset pubmed --lr 0.01575 --num_heads 4 (best model)
+#  python3 main.py --model gcn_gat_merge --dataset pubmed --lr 0.01575375 --num_heads 4 (best model) 
 
 if __name__ == '__main__':
     try:
