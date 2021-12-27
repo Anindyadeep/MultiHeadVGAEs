@@ -1,2 +1,1 @@
-# MultiHeadVGAEs
-Official Repository for different models based on MultiHead VGAEs.
+<h1 align="center">MultiHead VGAEs</h1>
