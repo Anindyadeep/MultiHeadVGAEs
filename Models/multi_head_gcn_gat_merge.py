@@ -18,19 +18,19 @@ class MultiHeadGCNGATMergeVGAE(nn.Module):
         gats = gcn_gat[0]
         gcn_len = len(gcns)
         gat_len = len(gats)
+
         mul = ((gcn_len * hidden_dim1) + (gat_len * (num_heads * hidden_dim1))) // hidden_dim1
 
         if gcn_len != 0:
             for i in range(gcn_len):
-                self.gcn_encoders = nn.ModuleDict({
-                    f'gcn_{i}' :  gnn.GCNConv(input_feat_dim, hidden_dim1)
-                })
+                self.gcn_encoders[f'gcn_{i}'] = gnn.GCNConv(input_feat_dim, hidden_dim1)
+            self.gcn_encoders = nn.ModuleDict(self.gcn_encoders)
+                
         
         if gat_len != 0:
             for i in range(gat_len):
-                self.gat_encoders = nn.ModuleDict({
-                    f'gat_{i}' : gnn.GATConv(input_feat_dim, hidden_dim1, heads = num_heads, concat = True)
-                })
+                self.gat_encoders[f'gat_{i}'] = gnn.GATConv(input_feat_dim, hidden_dim1, heads = num_heads, concat = True)
+            self.gat_encoders = nn.ModuleDict(self.gat_encoders)
     
         self.mu_gcn = gnn.GCNConv(mul * hidden_dim1, hidden_dim2)
         self.logvar_gat = gnn.GATConv(mul * hidden_dim1, hidden_dim2, heads = num_heads, concat = False)
