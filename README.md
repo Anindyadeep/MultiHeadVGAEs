@@ -2,9 +2,9 @@
 
 <h4 align="center">  
   
-[![State-of-the-art Cora](https://img.shields.io/static/v1?label=State-of-the-art&message=Cora&color=F6E92D&align=center)](https://github.com/trekhleb/state-of-the-art-shitcode)
-[![State-of-the-art Cora](https://img.shields.io/static/v1?label=State-of-the-art&message=Citeseer&color=F6E92D&align=center)](https://github.com/trekhleb/state-of-the-art-shitcode)
-[![State-of-the-art Cora](https://img.shields.io/static/v1?label=State-of-the-art&message=Pubmed&color=F6E92D&align=center)](https://github.com/trekhleb/state-of-the-art-shitcode)
+[![State-of-the-art-link-pred Cora](https://img.shields.io/static/v1?label=State-of-the-art-link-pred&message=Cora&color=F6E92D&align=center)](https://github.com/trekhleb/state-of-the-art-shitcode)
+[![State-of-the-art-link-pred Citeseer](https://img.shields.io/static/v1?label=State-of-the-art-link-pred&message=Citeseer&color=F6E92D&align=center)](https://github.com/trekhleb/state-of-the-art-shitcode)
+[![State-of-the-art-link-pred Pubmed](https://img.shields.io/static/v1?label=State-of-the-art-link-pred&message=Pubmed&color=F6E92D&align=center)](https://github.com/trekhleb/state-of-the-art-shitcode)
   
 </h4>
 
