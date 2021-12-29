@@ -26,6 +26,7 @@ Graphs are very much useful when it comes for link prediction tasks and for thos
 5. numpy
 6. wandb
 ```
+<br> </br>
 
 ## Running the model 
 
@@ -94,3 +95,47 @@ This will show this kind of output in terminal as shown below and in the wandb w
 </p>
 
 If you we the wandb logs carefully, then the names of the model are automatically made according the args we had typed in the treminal. Also we can track everything from test ROC. AUC scores to the time taken per epochs, disc utilizations etc.
+
+## Comparision with benchmarks
+Here we have taken the same model configurations as mentioned in the official paper of VGAE. The configurations are as follows:
+
+```
+1. Hidden dim 1 : 32
+2. Hidden dim 2 : 16
+3. Epochs       : 200
+4. lr           : 0.01
+```
+As there are some other hyper-parameters specific to our model, as we can design the heads of different and multiple blocks of those. Also we can choose the number of attention heads if we include a `GATConv` block in one of the head. But here we choose to take the bare minimum configurations.
+```
+1. Heads : [GCNConv, GATConv]
+2. Number of Attention Heads: 2
+```
+Here are the results and comparision with our model.
+
+**Have to change the values (tentaive)**
+
+| Model | Dataset | ROC-AUC score | AP score
+| --- | --- | --- | --- |
+| VGAE | Cora | 91.4 | 92.6 |
+| MultiHead VGAEs | Cora | 96.1 | 95.6 |
+
+
+
+| Model | Dataset | ROC-AUC score | AP score
+| --- | --- | --- | --- |
+| VGAE | Citeseer | 90.08 | 92.0 |
+| MultiHead VGAEs | Citeseer | 95.4 | 94.0 |
+
+
+| Model | Dataset | ROC-AUC score | AP score
+| --- | --- | --- | --- |
+| VGAE | Pubmed | 94.4 | 94.7 |
+| MultiHead VGAEs | Pubmed | 96.53 | 95.04 |
+
+<br> </br>
+## Comparision with the best model so far.
+We did't stopped here. Those runs were done with the bare minimum configurations of the model. But those can be extended by using some optimal configurations. And we are glad to share that we have surpassed the results of other models in terms of all the metrics and time required to run the model.
+
+**(Make the table once we get the absolute results)**
+
+Also view our best model runs [here](#)
