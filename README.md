@@ -39,6 +39,6 @@ There are different parameters which can be tweaked up and we can run the models
 | --lr | Choose a learning rate, default: 0.01 best lr: 0.015375 |
 | --optimizer | Choose the optimizer, available optimizers: adam, adamw, rms-prop, sgd |
 | --epochs | The number of epochs for the model to train, default: 200 |
-| --num_heads | (optional) Only use when we use multi-headed models of VGAE, which is number of attention heads |
-| --heads | Combination of Heads that will be used in Multiheaded GCN-GAT when required eg: gcn-gat-gcn-gat |
-| --wandb_project_name | (optional) Only use when you want to log the metrics on wandb |
+| --num_heads | (optional) The numeber of attention heads required for the model architecture, use only when there is an attenion block included. |
+| --heads | Combination of Heads that will be used in Multihead VGAE models when required eg: gcn-gat-gcn-gat |
+| --wandb_project_name | (optional) Only use when you want to log and visualize the metrics on weights and biases (wandb) |
