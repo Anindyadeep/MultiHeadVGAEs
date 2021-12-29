@@ -61,6 +61,9 @@ def main():
         model = wandb_model_pipeline(project=project_name, parameters=parameters)
 
     path_to_save_models =  os.path.join(os.getcwd(), "saved_models")
+    if not os.path.isdir(path_to_save_models):
+        os.mkdir("saved_models")
+    
     model_name = f"{parser.model}_{parser.dataset}_{parser.hidden_dim2}_{parser.num_heads}.pth"
     path_to_save_models = os.path.join(path_to_save_models, model_name)
     torch.save(model, path_to_save_models)
