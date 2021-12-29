@@ -7,3 +7,7 @@
 [![State-of-the-art Cora](https://img.shields.io/static/v1?label=State-of-the-art&message=Pubmed&color=F6E92D&align=center)](https://github.com/trekhleb/state-of-the-art-shitcode)
   
 </h4>
+
+<p align="center">
+  <img src="images/MultiHeadVGAEs.jpg"/>
+</p>
