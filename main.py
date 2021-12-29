@@ -16,6 +16,18 @@ from utils.parser import parameter_parser
 import torch
 import wandb
 
+def KeyboardInterruption(function):
+    try:
+        function()
+    except KeyboardInterrupt:
+        print("")
+        print("Interrupted")
+        print("exiting ...")
+        try:
+            sys.exit(0)
+        except SystemExit:
+            os._exit(0)
+
 def main():
     parser = parameter_parser()
     parameters = {
@@ -70,13 +82,4 @@ def main():
     print(f"Saved the model as {model_name} successfully!!!")
 
 if __name__ == '__main__':
-    try:
-        main()
-    except KeyboardInterrupt:
-        print("")
-        print("Interrupted")
-        print("exiting ...")
-        try:
-            sys.exit(0)
-        except SystemExit:
-            os._exit(0)
+    KeyboardInterruption(function=main)
