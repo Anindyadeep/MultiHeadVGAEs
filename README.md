@@ -24,6 +24,7 @@ Graphs are very much useful when it comes for link prediction tasks and for thos
 3. torch_geometric
 4. scipy
 5. numpy
+6. wandb
 ```
 
 ## Running the model 
@@ -75,3 +76,21 @@ python3 main.py --dataset pubmed --model multi_head_gcn_gat_merge --epochs 250 -
 <p align="center">
   <img src="images/mhgcngatmerge.jpg"/>
 </p>
+
+
+If we wanna also log and visualize the training and testing metrics per epochs, then we can do that by just adding the `-wandb_project_name` arg, similar to this.
+
+```
+python3 main.py --wandb_project_name test_project
+```
+This will show this kind of output in terminal as shown below and in the wandb website. One thing, we have to have an existing account in wandb.
+
+<p align="center">
+  <img src="images/wandb_demo.png"/>
+</p>
+
+<p align="center">
+  <img src="images/wandb_pic.png"/>
+</p>
+
+If you we the wandb logs carefully, then the names of the model are automatically made according the args we had typed in the treminal. Also we can track everything from test ROC. AUC scores to the time taken per epochs, disc utilizations etc.
