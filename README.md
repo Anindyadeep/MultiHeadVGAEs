@@ -42,3 +42,36 @@ There are different parameters which can be tweaked up and we can run the models
 | --num_heads | (optional) The numeber of attention heads required for the model architecture, use only when there is an attenion block included. |
 | --heads | Combination of Heads that will be used in Multihead VGAE models when required eg: gcn-gat-gcn-gat |
 | --wandb_project_name | (optional) Only use when you want to log and visualize the metrics on weights and biases (wandb) |
+
+
+### Runnning the base model
+
+To run the base model (the actual VGAE model) just type this:
+
+```
+python3 main.py 
+```
+This will generate an output similar to like this:
+
+<p align="center">
+  <img src="images/basemodel.png"/>
+</p>
+
+
+### Running the model with custom configurations
+Suppose we wanna run our model with these custom configurations:
+```
+1. model : multi_head_gcn_gat_merge
+2. dataset: pubmed
+3. epochs: 250
+4. lr: 0.015375
+5. heads: gcn-gat
+6. num_heads: 4
+```
+```
+python3 main.py --dataset pubmed --model multi_head_gcn_gat_merge --epochs 250 --lr 0.015375 --heads gcn-gat --num_heads 4
+```
+
+<p align="center">
+  <img src="images/mhgcngatmerge.jpg"/>
+</p>
