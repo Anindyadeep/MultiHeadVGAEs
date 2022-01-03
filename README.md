@@ -117,25 +117,60 @@ Here are the results and comparision with our model.
 | Model | Dataset | ROC-AUC score | AP score
 | --- | --- | --- | --- |
 | VGAE | Cora | 91.4 | 92.6 |
-| MultiHead VGAEs | Cora | 96.1 | 95.6 |
+| **MultiHead VGAEs** | **Cora** | **97.28** | **97.11** |
 
 
 
 | Model | Dataset | ROC-AUC score | AP score
 | --- | --- | --- | --- |
 | VGAE | Citeseer | 90.08 | 92.0 |
-| MultiHead VGAEs | Citeseer | 95.4 | 94.0 |
+| **MultiHead VGAEs** | **Citeseer** | **95.68** | **95.31** |
 
 
 | Model | Dataset | ROC-AUC score | AP score
 | --- | --- | --- | --- |
 | VGAE | Pubmed | 94.4 | 94.7 |
-| MultiHead VGAEs | Pubmed | 96.53 | 95.04 |
+| **MultiHead VGAEs** | **Pubmed** | **98.18** | **97.88** |
+
+If you want to visualize the results of the runs, please go to this [link](https://wandb.ai/anindya/BaseTestsResults?workspace=user-anindya)
 
 <br> </br>
 ## Comparision with the best model so far.
 We did't stopped here. Those runs were done with the bare minimum configurations of the model. But those can be extended by using some optimal configurations. And we are glad to share that we have surpassed the results of other models in terms of all the metrics and time required to run the model.
 
-**(Make the table once we get the absolute results)**
+For surpassing the performence of the state of the artmodels, we have applied these config for training our model:
+```
+Model : MultiHead VGAE 
+Heads : GCN, GAT Conv
+Number of attention heads: 4
+epochs: 300
+lr: 0.015375
+Hidden dim1: 64
+Hidden dim1: 32
+```
 
-Also view our best model runs [here](#)
+| Model | Dataset | ROC-AUC score | AP score
+| --- | --- | --- | --- |
+| VGAE | Cora | 91.4 | 92.6 |
+| GNAE | Cora | 95.6 | 95.7 |
+| Walkpooling | Cora | 95.9 | 96.0 |
+| **MultiHead VGAEs** | **Cora** | **99.13** | **99.2** |
+
+
+
+| Model | Dataset | ROC-AUC score | AP score
+| --- | --- | --- | --- |
+| VGNAE | Citeseer | 97.0 | 97.1 |
+| Graph InfoClust | Citeseer | 97.0 | 96.8 |
+| **MultiHead VGAEs** | **Citeseer** | **98.56** | **98.37** |
+
+
+| Model | Dataset | ROC-AUC score | AP score
+| --- | --- | --- | --- |
+| VGAE | Pubmed | 94.4 | 94.7 |
+| VGNAE | Pubmed | 97.6 | 97.6 |
+| Walkpooling | Pubmed | 98.7 | 98.7 |
+| **MultiHead VGAEs** | **Pubmed** | **99.18** | **98.91** |
+
+
+Also view our best model runs [here](https://wandb.ai/anindya/FinalBenchmarkTests?workspace=user-anindya)
