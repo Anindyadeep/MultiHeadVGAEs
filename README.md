@@ -172,3 +172,12 @@ Hidden dim1: 32
 
 
 Also view our best model runs [here](https://wandb.ai/anindya/FinalBenchmarkTests?workspace=user-anindya)
+
+```
+@misc{anindyadeep2022link,
+    title={Link Prediction with MultiHead GCN-GAT},
+    author={Anindyadeep Sannigrahi, Rahee Walambe, Yashovardhan, Yashowardhan Shinde},
+    year={2022},
+    archivePrefix={arXiv},
+}
+```
