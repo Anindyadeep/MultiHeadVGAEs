@@ -97,19 +97,17 @@ This will show this kind of output in terminal as shown below and in the wandb w
 If you we the wandb logs carefully, then the names of the model are automatically made according the args we had typed in the treminal. Also we can track everything from test ROC. AUC scores to the time taken per epochs, disc utilizations etc.
 
 ## Comparision with benchmarks
-Here we have taken the same model configurations as mentioned in the official paper of VGAE. The configurations are as follows:
+Here we have taken the same model configurations as mentioned in the official paper of VGAE. As there are some other hyper-parameters specific to our model, as we can design the heads of different and multiple blocks of those. Also we can choose the number of attention heads if we include a `GATConv` block in one of the head. But here we choose to take the bare minimum configurations.
 
 ```
 1. Hidden dim 1 : 32
 2. Hidden dim 2 : 16
 3. Epochs       : 200
 4. lr           : 0.01
+5. Heads : [GCNConv, GATConv]
+6. Number of Attention Heads: 2
 ```
-As there are some other hyper-parameters specific to our model, as we can design the heads of different and multiple blocks of those. Also we can choose the number of attention heads if we include a `GATConv` block in one of the head. But here we choose to take the bare minimum configurations.
-```
-1. Heads : [GCNConv, GATConv]
-2. Number of Attention Heads: 2
-```
+
 Here are the results and comparision with our model.
 
 **Have to change the values (tentaive)**
