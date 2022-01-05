@@ -16,6 +16,10 @@ warnings.filterwarnings("ignore")
 
 class VGAEMetrics(VGAE):
     def __init__(self, encoder):
+        """
+        The encoder we will be using here has no link with the actual Encoder block, as fake encoder blocks, just works fine.
+        We have to do so, because, since we are using the self.test() from VGAE, so super() requires encoder and decoder. 
+        """
         super(VGAEMetrics, self).__init__(encoder=encoder, decoder = InnerProductDecoder())
     
     def loss_fn(self, mu, logvar, pos_edge_index, all_edge_index):
