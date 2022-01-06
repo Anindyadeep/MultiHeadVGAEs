@@ -64,24 +64,24 @@ Install pytorch geometric packages (using pip)
  Please note that change the version of torch and cuda in the installation based on your current version. An example is shown below:
 
 ```
-pip install -q torch-scatter -f https://data.pyg.org/whl/torch-{TORCH VERSION}+{CUDA VERSION}.html
+$ pip install -q torch-scatter -f https://data.pyg.org/whl/torch-{TORCH VERSION}+{CUDA VERSION}.html
 
 ```
 
 So based on this, install these packages, currently default is been set to torch version `1.10.0` and cuda version `cu113`
 
 ```shell
-pip install -q torch-scatter -f https://data.pyg.org/whl/torch-1.10.0+cu113.html
+$ pip install -q torch-scatter -f https://data.pyg.org/whl/torch-1.10.0+cu113.html
 
-pip install -q torch-sparse -f https://data.pyg.org/whl/torch-1.10.0+cu113.html
+$ pip install -q torch-sparse -f https://data.pyg.org/whl/torch-1.10.0+cu113.html
 
-pip install -q git+https://github.com/pyg-team/pytorch_geometric.git
+$ pip install -q git+https://github.com/pyg-team/pytorch_geometric.git
 ```
 
 Or, Install pytorch geometric using conda.
 
 ```
-conda install pyg -c pyg -c conda-forge
+$ conda install pyg -c pyg -c conda-forge
 ```
 #
 
