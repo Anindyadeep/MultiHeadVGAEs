@@ -188,6 +188,11 @@ This will show this kind of output in terminal as shown below and in the wandb w
 
 If you we the wandb logs carefully, then the names of the model are automatically made according the args we had typed in the treminal. Also we can track everything from test ROC. AUC scores to the time taken per epochs, disc utilizations etc.
 
+
+**Running the model in Google colab** 
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1U5xmhPc8-8N_oH2-LKME89rgpqK5Ere_?usp=sharing)
+#
 ## Comparision with benchmarks
 Here we have taken the same model configurations as mentioned in the official paper of VGAE. As there are some other hyper-parameters specific to our model, as we can design the heads of different and multiple blocks of those. Also we can choose the number of attention heads if we include a `GATConv` block in one of the head. But here we choose to take the bare minimum configurations.
 
