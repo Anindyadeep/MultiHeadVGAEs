@@ -65,7 +65,6 @@ Install pytorch geometric packages (using pip)
 
 ```
 $ pip install -q torch-scatter -f https://data.pyg.org/whl/torch-{TORCH VERSION}+{CUDA VERSION}.html
-
 ```
 
 So based on this, install these packages, currently default is been set to torch version `1.10.0` and cuda version `cu113`
