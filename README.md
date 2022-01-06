@@ -110,7 +110,7 @@ Install PyTorch Geometric (CPU) using conda **recommended**
 conda install pyg -c pyg -c conda-forge
 ```
 
-For further installation procedure, please go through the [official documentation](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html)
+For further installation procedure, please go through the [Official PyTorch Documentation](https://pytorch.org/) and [official PyG documentation](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html)
 
 
 Install wandb
