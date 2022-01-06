@@ -34,25 +34,34 @@ Graphs are very much useful when it comes for link prediction tasks and for thos
 
 **Note: Check whether the cuda version is either 10.2 or 11.3, PyG does't work properly for cuda version 11.1**
 
-If you are having cuda available, then we can just install these libraries from our terminal as mentioned below.
+If you are having cuda available, then we can just install these packages from our terminal as mentioned below.
 
 Install PyTorch
 
 for cuda: 10.2
 ```
-pip3 install torch torchvision torchaudio
+$ pip3 install torch torchvision torchaudio
 ```
 for cuda 11.3
 ```
-pip3 install torch==1.10.1+cu113 torchvision==0.11.2+cu113 torchaudio==0.10.1+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html
+$ pip3 install torch==1.10.1+cu113 torchvision==0.11.2+cu113 torchaudio==0.10.1+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html
 ```
 
 Or install PyTorch using conda
-```
-conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
-```
+(for cuda 10.2)
 
-Install pytorch geometric libraries (using pip), Please note that change the version of torch and cuda in the installation based on your current version. An example is shown below:
+```
+$ conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
+```
+(for cuda 11.3)
+```
+$ conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
+```
+#
+
+Install pytorch geometric packages (using pip)
+
+ Please note that change the version of torch and cuda in the installation based on your current version. An example is shown below:
 
 ```
 pip install -q torch-scatter -f https://data.pyg.org/whl/torch-{TORCH VERSION}+{CUDA VERSION}.html
