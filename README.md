@@ -44,7 +44,6 @@ Once done, please install wandb for visualization of the results.
 ```
 pip install wandb
 ```
-<br> </br>
 
 ## Running the model 
 
@@ -89,7 +88,10 @@ Suppose we wanna run our model with these custom configurations:
 6. num_heads: 4
 ```
 ```
-python3 main.py --dataset pubmed --model multi_head_gcn_gat_merge --epochs 250 --lr 0.015375 --heads gcn-gat --num_heads 4
+python3 main.py --dataset pubmed \
+                --model multi_head_gcn_gat_merge \
+                --epochs 250 --lr 0.015375 \
+                --heads gcn-gat --num_heads 4
 ```
 
 <p align="center">
