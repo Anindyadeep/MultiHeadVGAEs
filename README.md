@@ -27,45 +27,9 @@ Graphs are very much useful when it comes for link prediction tasks and for thos
 6. wandb
 ```
 ## Installation 
+Please go through the [official installation page of pytorch](https://pytorch.org/) for PyTorch installation and also the [official installation page of PyG](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html), for installation of essential packages.
 
-
-
-#### **With CUDA**
-
-**Note: Check whether the cuda version is either 10.2 or 11.3, PyG does't work properly for cuda version 11.1**
-If you are having cuda available, then we can just install these packages from our terminal as mentioned below.
-
-Install PyTorch
-
-for cuda: 10.2
-```
-pip3 install torch torchvision torchaudio
-```
-for cuda 11.3
-```
-pip3 install torch==1.10.1+cu113 torchvision==0.11.2+cu113 torchaudio==0.10.1+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html
-```
-
-Or install PyTorch using conda
-(for cuda 10.2)
-
-```
-conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
-```
-(for cuda 11.3)
-```
-conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
-```
-#
-
-Install pytorch geometric packages (using pip)
-
- Please note that change the version of torch and cuda in the installation based on your current version. An example is shown below:
-
-```
-pip install -q torch-scatter -f https://data.pyg.org/whl/torch-{TORCH VERSION}+{CUDA VERSION}.html
-```
-So based on this, install these packages, currently default is been set to torch version `1.10.0` and cuda version `cu113`
+You can also paste these if you have CUDA 11.3 for PyG installation.
 
 ```shell
 pip install -q torch-scatter -f https://data.pyg.org/whl/torch-1.10.0+cu113.html
@@ -75,43 +39,8 @@ pip install -q torch-sparse -f https://data.pyg.org/whl/torch-1.10.0+cu113.html
 pip install -q git+https://github.com/pyg-team/pytorch_geometric.git
 ```
 
-Or, Install pytorch geometric using conda.
+Once done, please install wandb for visualization of the results.
 
-```
-conda install pyg -c pyg -c conda-forge
-```
-#
-
-**Without CUDA:**
-If you are using CPU, which is absolutely fine, then just install pytorch, pytorch_geometric for cpu by following this commands. Installation process could be appear easier if done using anaconda.
-
-Install PyTorch
-
-(using pip)
-```
-pip3 install torch==1.10.1+cpu torchvision==0.11.2+cpu torchaudio==0.10.1+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html
-```
-
-(using conda)
-```
-conda install pytorch torchvision torchaudio cpuonly -c pytorch
-```
-
-Install PyTorch Geometric (CPU) using pip
-```
-pip install torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric -f https://data.pyg.org/whl/torch-1.10.0+cpu.html
-```
-
-Install PyTorch Geometric (CPU) using conda **recommended**
-
-```shell
-conda install pyg -c pyg -c conda-forge
-```
-
-For further installation procedure, please go through the [Official PyTorch Documentation](https://pytorch.org/) and [official PyG documentation](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html)
-
-
-Install wandb
 ```
 pip install wandb
 ```
