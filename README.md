@@ -33,9 +33,7 @@ You can also paste these if you have CUDA 11.3 for PyG installation.
 
 ```shell
 pip install -q torch-scatter -f https://data.pyg.org/whl/torch-1.10.0+cu113.html
-
 pip install -q torch-sparse -f https://data.pyg.org/whl/torch-1.10.0+cu113.html
-
 pip install -q git+https://github.com/pyg-team/pytorch_geometric.git
 ```
 
@@ -157,7 +155,7 @@ Here are the results and comparision with our model.
 
 If you want to visualize the results of the runs, please go to this [link](https://wandb.ai/anindya/BaseTestsResults?workspace=user-anindya)
 
-<br> </br>
+
 ## Comparision with the best model so far.
 We did't stopped here. Those runs were done with the bare minimum configurations of the model. But those can be extended by using some optimal configurations. And we are glad to share that we have surpassed the results of other models in terms of all the metrics and time required to run the model.
 
