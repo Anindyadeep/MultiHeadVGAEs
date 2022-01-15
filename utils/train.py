@@ -18,21 +18,6 @@ from utils import metrics, input_data
 from Models import base_model, gcn_gcn_merge, multi_head_gcn, gcn_gat, multi_head_gcn_gat, gcn_gat_merge, multi_head_gcn_gat_merge
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-class SampleConv(nn.Module):
-    def __init__(self, input_feat_dim, hidden_dim1, hidden_dim2):
-        super(SampleConv, self).__init__()
-        """
-        This SampleConv is just a Fake Encoder in order to make compatible with the PyG encoder, but we are 
-        not using any sort of features of this encoder.
-        """
-        self.gc_conv = gnn.GCNConv(input_feat_dim, hidden_dim1)
-        self.mu_conv = gnn.GCNConv(hidden_dim1, hidden_dim2)
-        self.logvar_conv = gnn.GCNConv(hidden_dim1, hidden_dim2)
-
-    def forward(self, x, adj):
-        hidden = self.gc_conv(x, adj)
-        hidden = F.relu(hidden)
-        return self.mu_conv(hidden, adj), self.logvar_conv(hidden, adj)
 
 
 class TorchTrain(object):
@@ -76,7 +61,7 @@ class TorchTrain(object):
 
         # printing the model
         print(self.model)
-        self.model_encoder = SampleConv(self.data.x.shape[1], self.hidden_dim1, self.hidden_dim2)
+        #self.model_encoder = SampleConv(self.data.x.shape[1], self.hidden_dim1, self.hidden_dim2)
 
         self.optimizers = {
             'adam'  : optim.Adam(self.model.parameters(), lr = self.lr),
@@ -86,7 +71,7 @@ class TorchTrain(object):
         }
         
         self.optimizer =  self.optimizers[optimizer_name]
-        self.criterion = metrics.VGAEMetrics(encoder = self.model_encoder)
+        self.criterion = metrics.VGAEMetrics()
 
     def train(self):
         time_total_start = time.time()
@@ -94,11 +79,11 @@ class TorchTrain(object):
             t = time.time()
             self.model.train()
             self.optimizer.zero_grad()
-            adj_recon, mu, logvar = self.model(self.data.x, self.all_edge_index)
+            adj_recon, mu, logvar = self.model(self.data.x.to(device), self.all_edge_index.to(device))
             loss = self.criterion.loss_fn(mu=mu,
                                     logvar=logvar,
-                                    pos_edge_index=self.data.train_pos_edge_index,
-                                    all_edge_index=self.all_edge_index)
+                                    pos_edge_index=self.data.train_pos_edge_index.to(device),
+                                    all_edge_index=self.all_edge_index.to(device))
             loss.backward()
             self.optimizer.step()
 
@@ -106,8 +91,8 @@ class TorchTrain(object):
                 self.model.eval()
                 roc_auc, ap = self.criterion.single_test(mu = mu,
                                                     logvar=logvar,
-                                                    test_pos_edge_index=self.data.test_pos_edge_index,
-                                                    test_neg_edge_index=self.data.test_neg_edge_index)
+                                                    test_pos_edge_index=self.data.test_pos_edge_index.to(device),
+                                                    test_neg_edge_index=self.data.test_neg_edge_index.to(device))
                 print(f"TESTING | AT epoch {'00' + str(epoch + 1) if epoch + 1 < 10 else ('0' +  str(epoch + 1) if epoch + 1 < 100 else str(epoch + 1))}, loss: {loss.item():.4f}, ROC_AUC: {roc_auc:.4f}, AP: {ap:.4f}, Time: {(time.time() - t):.4f}")
         
         print(f"The total time taken: {(time.time() - time_total_start):.4f}")

@@ -26,7 +26,22 @@ Graphs are very much useful when it comes for link prediction tasks and for thos
 5. numpy
 6. wandb
 ```
-<br> </br>
+## Installation 
+Please go through the [official installation page of pytorch](https://pytorch.org/) for PyTorch installation and also the [official installation page of PyG](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html), for installation of essential packages.
+
+You can also paste these if you have CUDA 11.3 for PyG installation.
+
+```shell
+pip install -q torch-scatter -f https://data.pyg.org/whl/torch-1.10.0+cu113.html
+pip install -q torch-sparse -f https://data.pyg.org/whl/torch-1.10.0+cu113.html
+pip install -q git+https://github.com/pyg-team/pytorch_geometric.git
+```
+
+Once done, please install wandb for visualization of the results.
+
+```
+pip install wandb
+```
 
 ## Running the model 
 
@@ -71,7 +86,10 @@ Suppose we wanna run our model with these custom configurations:
 6. num_heads: 4
 ```
 ```
-python3 main.py --dataset pubmed --model multi_head_gcn_gat_merge --epochs 250 --lr 0.015375 --heads gcn-gat --num_heads 4
+python3 main.py --dataset pubmed \
+                --model multi_head_gcn_gat_merge \
+                --epochs 250 --lr 0.015375 \
+                --heads gcn-gat --num_heads 4
 ```
 
 <p align="center">
@@ -96,6 +114,11 @@ This will show this kind of output in terminal as shown below and in the wandb w
 
 If you we the wandb logs carefully, then the names of the model are automatically made according the args we had typed in the treminal. Also we can track everything from test ROC. AUC scores to the time taken per epochs, disc utilizations etc.
 
+
+**Running the model in Google colab** 
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1U5xmhPc8-8N_oH2-LKME89rgpqK5Ere_?usp=sharing)
+#
 ## Comparision with benchmarks
 Here we have taken the same model configurations as mentioned in the official paper of VGAE. As there are some other hyper-parameters specific to our model, as we can design the heads of different and multiple blocks of those. Also we can choose the number of attention heads if we include a `GATConv` block in one of the head. But here we choose to take the bare minimum configurations.
 
@@ -132,7 +155,7 @@ Here are the results and comparision with our model.
 
 If you want to visualize the results of the runs, please go to this [link](https://wandb.ai/anindya/BaseTestsResults?workspace=user-anindya)
 
-<br> </br>
+
 ## Comparision with the best model so far.
 We did't stopped here. Those runs were done with the bare minimum configurations of the model. But those can be extended by using some optimal configurations. And we are glad to share that we have surpassed the results of other models in terms of all the metrics and time required to run the model.
 
