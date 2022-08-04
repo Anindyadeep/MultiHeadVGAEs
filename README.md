@@ -9,7 +9,7 @@
 </h4>
 
 <p align="center">
-  <img src="images/MultiHeadVGAEs.jpg"/>
+  <img src="images/mvgae.png"/>
 </p>
 
 ## Abstract
