@@ -13,9 +13,22 @@
 </p>
 
 ## Abstract
-<p align="justify">
-Graphs are very much useful when it comes for link prediction tasks and for those, we need to have a very good embedding method that could transform the high dimensional node features to a single vector representation. Several methods have been proposed for different kinds of Variation Graph Autoencoders architecture. Each and every new architecture brings some kind of variations and acceleration in performance either in computational speed or getting good results. Our method is a combination of both. This architecture surpasses the link predictions metrics for all the three benchmark datasets. Along with the parallel auto-encoders could undergo parallel computation for faster and accurate results at the same time. Our method proposes a novel encoder architectures that consist of parallel branching of different encoder blocks a combination of GCN and GATConv encoders and from those blocks we take the maximum sampled out node embeddings, and thus can achieve some competitive results on the three benchmark datasets for link prediction tasks
-</p>
+
+*Graph Neural Network (GNN) is one of the primordial structures when it comes to link prediction types of tasks. Link prediction
+tasks could simply be defined as the probability of two nodes being connected by a link. To achieve exceptionally successful
+performance in link prediction tasks, extremely powerful and highly representative embeddings are essential. Several approaches
+are reported in the graph machine learning paradigm to construct such embeddings. One such popular method is graph
+reconstruction using Graph Autoencoders or Variational Graph Autoencoders (VGAEs). Several variations of the VGAEs have
+also been introduced to improve the performance of the link prediction task and outperform the baseline models. Tasks like link
+prediction require lots of computing power when practiced on large sets of data. So novel methods that can provide high evaluation
+metrics as well as be computationally efficient are very much required these days. In this work, to mitigate this limitation, a novel
+architecture Multi-Head VGAEs (MVGAs) is proposed. This approach utilizes parallel computations using its independent heads
+and performs link prediction using those combinations of features. The proposed model was tested for three benchmark datasets
+namely Cora, CiteSeer and PubMed for the link prediction tasks on citation graphs. It is observed that the proposed model
+outperforms the existing t models for this task by achieving an AUC and AP score of 99.1%, 99.2% for Cora, 98.5%, 98.3% for
+Citeseer and 99.1%, 98.9% for the PubMed dataset respectively. The average improvement of 2% and 3% is observed in AUC and
+AP score respectively*
+
 
 ## Requirements
 ```
