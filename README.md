@@ -125,7 +125,7 @@ This will show this kind of output in terminal as shown below and in the wandb w
   <img src="images/wandb_pic.png"/>
 </p>
 
-If you we the wandb logs carefully, then the names of the model are automatically made according the args we had typed in the treminal. Also we can track everything from test ROC. AUC scores to the time taken per epochs, disc utilizations etc.
+If you the wandb logs carefully, then the names of the model are automatically made according the args we had typed in the treminal. Also we can track everything from test ROC. AUC scores to the time taken per epochs, disc utilizations etc.
 
 
 **Running the model in Google colab** 
