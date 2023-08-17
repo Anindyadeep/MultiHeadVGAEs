@@ -3,7 +3,7 @@ backcall @ file:///home/conda/feedstock_root/build_artifacts/backcall_1592338393
 backports.functools-lru-cache @ file:///home/conda/feedstock_root/build_artifacts/backports.functools_lru_cache_1618230623929/work
 brotlipy==0.7.0
 cachetools==4.2.4
-certifi==2021.10.8
+certifi==2023.7.22
 cffi @ file:///tmp/build/80754af9/cffi_1625814692085/work
 charset-normalizer @ file:///home/conda/feedstock_root/build_artifacts/charset-normalizer_1638815705608/work
 click==8.0.3
